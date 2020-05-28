@@ -28,7 +28,7 @@ prey_rect = prey_image.get_rect()
 prey_rect.center = (width//2, height//2)
 
 #variables to move prey
-speed = pygame.math.Vector2(0, 0)
+speed = pygame.math.Vector2(6, 5)
 rotation = random.randint(0, 360)
 speed.rotate_ip(rotation)
 
