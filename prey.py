@@ -4,7 +4,7 @@ from pygame.locals import *
 
 # makes class for prey
 
-class Prey:
+class Prey(pygame.sprite.Sprite):
   def __init__(self, pos):
     #loads image
     self.image = pygame.image.load("prey.jpg")   

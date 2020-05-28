@@ -2,6 +2,7 @@ import pygame
 import random
 from pygame.locals import *
 from prey import *
+from lion import *
 
 pygame.init()
 
@@ -19,6 +20,8 @@ screen = pygame.display.set_mode(screen_size)
 
 #color of background
 color = (235, 204, 52)
+
+player = Lion((150,150))
 
 # loading the prey image
 prey_image = pygame.image.load("prey.jpg")
@@ -74,7 +77,27 @@ def main():
       if event.type == MOUSEBUTTONDOWN:
         # adds prey when and where you click
         preys.append(Prey(event.pos))
-      if event.type == KEYDOWN:
+      if event.type == KEYUP:
+        if event.key == K_UP:
+          Player.speed[1]=0 
+        if event.key == K_DOWN:
+          Player.speed[1]=0  
+        if event.key==K_LEFT:
+          Player.speed[0]=0
+        if event.key==K_RIGHT:
+          Player.speed[0]=0
+    if event.type == KEYDOWN:
+        if event.key == K_UP:
+          Player.speed[1]=-10 
+        if event.key == K_DOWN:
+          Player.speed[1]=10  
+        if event.key==K_LEFT:
+          Player.speed[0]=-10
+        if event.key==K_RIGHT:
+          Player.speed[0]=10
+
+
+
         if event.key == K_g:
           speed[0] = 0
           speed[1] = 0
@@ -96,6 +119,8 @@ def main():
       prey.update()
     for prey in preys:
       prey.draw(screen)
+
+    player.update()
 
     #updates it
     pygame.display.flip()

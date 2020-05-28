@@ -9,10 +9,10 @@ everytime the lion touches its prey, add 1 to the score
 
 __________STEPS:____________
 
-1 make background
-2 get pic of prey
-3 make prey code(randomly runs around)
-4 get pic of lion
+_1 make background
+_2 get pic of prey
+_3 make prey code(randomly runs around)
+_4 get pic of lion
 5 make lion code(move with keys)
 6 make collision code
 
