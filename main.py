@@ -1,5 +1,7 @@
 import pygame
 import random
+from pygame.locals import *
+from prey import *
 
 pygame.init()
 
@@ -28,7 +30,7 @@ prey_rect = prey_image.get_rect()
 prey_rect.center = (width//2, height//2)
 
 #variables to move prey
-speed = pygame.math.Vector2(6, 5)
+speed = pygame.math.Vector2(10, 6)
 rotation = random.randint(0, 360)
 speed.rotate_ip(rotation)
 
@@ -62,6 +64,25 @@ def main():
   while True:
     
     clock.tick(60)
+
+    for event in pygame.event.get():
+      if event.type == quit:
+        sys.exit()
+      if event.type == MOUSEBUTTONDOWN:
+        print("")
+      if event.type == KEYDOWN:
+        if event.key == K_g:
+          speed[0] = 0
+          speed[1] = 0
+        if event.key == K_f:
+          speed[0] = 40
+          speed[1] = 40
+        if event.key == K_s:
+          speed[0] = 10
+          speed[1] = 10
+
+
+
     move_prey()
     #makes background color
     screen.fill(color)
