@@ -34,3 +34,6 @@ class Prey:
         self.speed[1] *= -1            
         self.image = pygame.transform.flip(self.image, False, True)
         self.rect.move_ip(0, self.speed[1])
+        
+  def draw(self, screen):
+        screen.blit(self.image, self.rect)

@@ -36,6 +36,9 @@ speed.rotate_ip(rotation)
 
 pygame.transform.rotate(prey_image, 180 - rotation)
 
+#an array of the prey created
+preys = []
+
 #moves the prey
 def move_prey():
   global prey_image
@@ -69,7 +72,8 @@ def main():
       if event.type == quit:
         sys.exit()
       if event.type == MOUSEBUTTONDOWN:
-        print("")
+        # adds prey when and where you click
+        preys.append(Prey(event.pos))
       if event.type == KEYDOWN:
         if event.key == K_g:
           speed[0] = 0
@@ -87,6 +91,12 @@ def main():
     #makes background color
     screen.fill(color)
     screen.blit(prey_image, prey_rect)
+
+    for prey in preys:
+      prey.update()
+    for prey in preys:
+      prey.draw(screen)
+
     #updates it
     pygame.display.flip()
 
