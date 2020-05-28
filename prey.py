@@ -9,7 +9,7 @@ class Prey:
     #loads image
     self.image = pygame.image.load("prey.jpg")   
     # gets a random size     
-    scale = random.randint(3, 5)*10        
+    scale = random.randint(3, 7)*10        
     self.image = pygame.transform.smoothscale(self.image, (scale, scale))        
     self.rect = self.image.get_rect()  
     # puts the image where you clicked      
