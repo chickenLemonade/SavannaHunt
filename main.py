@@ -3,6 +3,9 @@ import random
 
 pygame.init()
 
+# Clock to set framerate
+clock = pygame.time.Clock()
+
 # makes screen info
 screen_info = pygame.display.Info()
 
@@ -25,21 +28,44 @@ prey_rect = prey_image.get_rect()
 prey_rect.center = (width//2, height//2)
 
 #variables to move prey
-speed = pygame.math.Vector2(30, 5)
+speed = pygame.math.Vector2(0, 0)
 rotation = random.randint(0, 360)
 speed.rotate_ip(rotation)
 
 pygame.transform.rotate(prey_image, 180 - rotation)
 
+#moves the prey
+def move_prey():
+  global prey_image
+  screen_info = pygame.display.Info()
+  prey_rect.move_ip(speed)
+
+  #  IF PREY HITS TOP OR BOTTOM
+  if prey_rect.top < 0 or prey_rect.bottom > screen_info.current_h:
+    #go the opposite direction
+    speed[1] *= -1
+    prey_rect.move_ip(0, speed[1])
+    #updates it
+    prey_image = pygame.transform.flip(prey_image, True, False)
+
+  #  IF PREY HITS LEFT OR RIGHT
+  if prey_rect.left < 0 or prey_rect.right > screen_info.current_w:
+    #go the opposite direction
+    speed[0] *= -1
+    prey_rect.move_ip(speed[0], 0)
+    #updates it
+    prey_image = pygame.transform.flip(prey_image, False, True)
 
 # game code
 def main():
   #while true == will always run
   while True:
     
+    clock.tick(60)
+    move_prey()
     #makes background color
     screen.fill(color)
-
+    screen.blit(prey_image, prey_rect)
     #updates it
     pygame.display.flip()
 
