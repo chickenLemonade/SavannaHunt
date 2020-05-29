@@ -7,6 +7,9 @@ from lion import *
 #reactions possible for catching prey
 eat = ['Delicious!', 'Mmmm', 'Tasty', 'I\'ve caught you!', 'You\'ll never escape!', 'You will make a fine dinner']
 
+scorePoint = 0
+scoreAPoint = "Score is: " + str(scorePoint + 1)
+
 pygame.init()
 
 # Clock to set framerate
@@ -27,6 +30,10 @@ color = (235, 204, 52)
 #tect color and background color
 textColor=(50,254,30)
 txtBackgroundColor=(94,0,4)
+
+#stuff for the score
+scoreColor = (184,240,161)
+scoreBackground = (7,84,152)
 
 
 player = Lion((150,150))
@@ -147,6 +154,21 @@ def main():
       textRect = text.get_rect() 
       textRect.center = (width // 2, height // 2)
       screen.blit(text,textRect)
+
+      #MORE STUFF FOR THE SCORE
+
+      #start score
+      scorePoint = 0
+
+      #adds a point every time
+      scoreAPoint = "Score is: " + str(scorePoint + 1)
+
+      #same as text
+      scoreFont = pygame.font.Font('freesansbold.ttf', 32) 
+      score = scoreFont.render(scoreAPoint, True, scoreColor, scoreBackground)
+      scoreRect = score.get_rect() 
+      scoreRect.topleft = (width // 2, height // 2)
+      screen.blit(score,scoreRect)
 
     #updates it 
     pygame.display.flip()
