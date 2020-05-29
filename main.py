@@ -4,6 +4,9 @@ from pygame.locals import *
 from prey import *
 from lion import *
 
+#reactions possible for catching prey
+eat = ['Delicious!', 'Mmmm', 'Tasty', 'I\'ve caught you!', 'You\'ll never escape!', 'You will make a fine dinner']
+
 pygame.init()
 
 # Clock to set framerate
@@ -48,13 +51,7 @@ pygame.transform.rotate(prey_image, 180 - rotation)
 #for collision code
 
 #prey created
-preys = pygame.sprite.Group()
-
-#forn and stuff for text
-font=pygame.font.Font('freesansbold.ttf', 32) 
-text=font.render("Hello",True,textColor,txtBackgroundColor)
-textRect = text.get_rect() 
-textRect.center = (width // 2, height // 2) 
+preys = pygame.sprite.Group() 
 
 #moves the prey
 def move_prey():
@@ -140,6 +137,14 @@ def main():
     get_hit=pygame.sprite.spritecollide(player,preys,False)
     screen.blit(player.image,player.rect)
     if get_hit:
+      # picks a reaction
+      num = random.randint(0, len(eat) - 1)
+      devour = eat[num]
+      #stuff for font
+      font=pygame.font.Font('freesansbold.ttf', 32) 
+      textRect = text.get_rect() 
+      textRect.center = (width // 2, height // 2)
+      text=font.render(devour,True,textColor,txtBackgroundColor)
       screen.blit(text,textRect)
 
     #updates it
