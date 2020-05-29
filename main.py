@@ -147,7 +147,8 @@ def main():
       #MORE STUFF FOR THE SCORE
 
       #adds a point every time
-      scoreAPoint = "Score is: " + str(scorePoint + 1)
+      scorePoint += 1
+      scoreAPoint = ("Score is: " + scorePoint)
 
       #same as text
       scoreFont = pygame.font.Font('freesansbold.ttf', 32) 
