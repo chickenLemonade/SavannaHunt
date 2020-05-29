@@ -165,7 +165,7 @@ def main():
     if scorePoint >= 30:
       screen.fill(newColor)
 
-      winFont = pygame.font.Font('freesansbold.ttf', 100) 
+      winFont = pygame.font.Font('Modak-Devanagari.ttf', 100) 
       win = winFont.render("You won!!!", True, winColor, winBackgroundColor)
       winRect = win.get_rect() 
       winRect.center = (width // 2, height //2)
