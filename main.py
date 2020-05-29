@@ -8,7 +8,7 @@ from lion import *
 eat = ['Delicious!', 'Mmmm', 'Tasty', 'I\'ve caught you!', 'You\'ll never escape!', 'You will make a fine dinner']
 
 # start score
-scorePoint = 0
+scorePoint = 29
 
 pygame.init()
 
@@ -27,6 +27,9 @@ screen = pygame.display.set_mode(screen_size)
 #color of background
 color = (235, 204, 52)
 
+#color of background when you win
+newColor = (66,103,149)
+
 #tect color and background color
 textColor=(50,254,30)
 txtBackgroundColor=(94,0,4)
@@ -34,6 +37,10 @@ txtBackgroundColor=(94,0,4)
 #stuff for the score
 scoreColor = (184,240,161)
 scoreBackground = (7,84,152)
+
+#color of win text
+winColor = (152,195,225)
+winBackgroundColor = (66,103,149)
 
 
 player = Lion((150,150))
@@ -139,7 +146,7 @@ def main():
       devour = eat[num]
 
       #stuff for font
-      font=pygame.font.Font('freesansbold.ttf', 32) 
+      font = pygame.font.Font('freesansbold.ttf', 32) 
       text = font.render(devour, True, textColor, txtBackgroundColor)
       textRect = text.get_rect() 
       textRect.center = (width // 2, 550)
@@ -154,6 +161,16 @@ def main():
     scoreRect = score.get_rect() 
     scoreRect.topleft = (50, 50)
     screen.blit(score,scoreRect)
+
+    if scorePoint >= 30:
+      screen.fill(newColor)
+
+      winFont = pygame.font.Font('freesansbold.ttf', 100) 
+      win = winFont.render("You won!!!", True, winColor, winBackgroundColor)
+      winRect = win.get_rect() 
+      winRect.center = (width // 2, height //2)
+      screen.blit(win,winRect)
+      
 
     #updates it
     pygame.display.flip()
