@@ -14,7 +14,7 @@ _2 get pic of prey
 _3 make prey code(randomly runs around)
 _4 get pic of lion
 _5 make lion code(move with keys)
-6 make collision code
+_6 make collision code
 
 __________OPTIONAL:____________
 
@@ -24,7 +24,6 @@ __________OPTIONAL:____________
 9 when collision is detected add 1 to score
 
 10 when collision is detected, make lion pic one of an eating lion and time.sleep(2)
-
 
 
 __________THE CODE FOR 7 PARTIALLY MADE IS...__________

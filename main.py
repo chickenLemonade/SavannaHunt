@@ -28,6 +28,7 @@ color = (235, 204, 52)
 textColor=(50,254,30)
 txtBackgroundColor=(94,0,4)
 
+
 player = Lion((150,150))
 
 # loading the prey image
@@ -142,12 +143,12 @@ def main():
       devour = eat[num]
       #stuff for font
       font=pygame.font.Font('freesansbold.ttf', 32) 
+      text = font.render(devour, True, textColor, txtBackgroundColor)
       textRect = text.get_rect() 
       textRect.center = (width // 2, height // 2)
-      text=font.render(devour,True,textColor,txtBackgroundColor)
       screen.blit(text,textRect)
 
-    #updates it
+    #updates it 
     pygame.display.flip()
 
 
