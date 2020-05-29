@@ -8,7 +8,7 @@ from lion import *
 eat = ['Delicious!', 'Mmmm', 'Tasty', 'I\'ve caught you!', 'You\'ll never escape!', 'You will make a fine dinner']
 
 # start score
-scorePoint = 29
+scorePoint = 0
 
 pygame.init()
 

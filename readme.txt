@@ -22,3 +22,24 @@ _7 in collision code, take away prey when _collision is detected
 
 _8 make text in the top left of screen with score
 _9 when collision is detected add 1 to score
+
+
+________END:__________
+
+Looks like we are almost done.
+
+to add some competition to the game, this is what I have to do next:
+
+1 add a hunter pic(should be biggest looking and largetst range of speed)
+
+
+2 make a hunter class
+3 hunter class randomly runs around(like prey)
+
+
+
+4 when hunter touches lion, loose hp
+  - lion starts with 10 hp
+  - if hunter touches lion, -3 hp
+  - if lion eats prey, +1 hp
+  - if hp <= 0, game over screen
