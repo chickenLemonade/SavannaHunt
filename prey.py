@@ -6,6 +6,7 @@ from pygame.locals import *
 
 class Prey(pygame.sprite.Sprite):
   def __init__(self, pos):
+    super().__init__()
     #loads image
     self.image = pygame.image.load("prey.jpg")   
     # gets a random size     
