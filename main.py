@@ -89,6 +89,9 @@ def main():
   while True:
     
     clock.tick(60)
+    global scorePoint
+    global scoreAPoint
+    scoreAPoint = ("Score is: " + str(scorePoint))
 
     for event in pygame.event.get():
       if event.type == quit:
@@ -135,8 +138,6 @@ def main():
       num = random.randint(0, len(eat) - 1)
       devour = eat[num]
 
-      # remove(preys)
-
       #stuff for font
       font=pygame.font.Font('freesansbold.ttf', 32) 
       text = font.render(devour, True, textColor, txtBackgroundColor)
@@ -148,16 +149,15 @@ def main():
 
       #adds a point every time
       scorePoint += 1
-      scoreAPoint = ("Score is: " + scorePoint)
 
-      #same as text
-      scoreFont = pygame.font.Font('freesansbold.ttf', 32) 
-      score = scoreFont.render(scoreAPoint, True, scoreColor, scoreBackground)
-      scoreRect = score.get_rect() 
-      scoreRect.topleft = (70, 70)
-      screen.blit(score,scoreRect)
+    #same as text
+    scoreFont = pygame.font.Font('freesansbold.ttf', 32) 
+    score = scoreFont.render(scoreAPoint, True, scoreColor, scoreBackground)
+    scoreRect = score.get_rect() 
+    scoreRect.topleft = (50, 50)
+    screen.blit(score,scoreRect)
 
-    #updates it 
+    #updates it
     pygame.display.flip()
 
 
