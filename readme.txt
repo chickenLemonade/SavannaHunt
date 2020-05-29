@@ -13,7 +13,7 @@ _1 make background
 _2 get pic of prey
 _3 make prey code(randomly runs around)
 _4 get pic of lion
-5 make lion code(move with keys)
+_5 make lion code(move with keys)
 6 make collision code
 
 __________OPTIONAL:____________

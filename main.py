@@ -21,6 +21,10 @@ screen = pygame.display.set_mode(screen_size)
 #color of background
 color = (235, 204, 52)
 
+#tect color and background color
+textColor=(50,254,30)
+txtBackgroundColor=(94,0,4)
+
 player = Lion((150,150))
 
 # loading the prey image
@@ -39,8 +43,18 @@ speed.rotate_ip(rotation)
 
 pygame.transform.rotate(prey_image, 180 - rotation)
 
-#an array of the prey created
-preys = []
+#The reason it is used insetad of the array is because
+#it uses a sprite, which has built in stuff that is needed
+#for collision code
+
+#prey created
+preys = pygame.sprite.Group()
+
+#forn and stuff for text
+font=pygame.font.Font('freesansbold.ttf', 32) 
+text=font.render("Hello",True,textColor,txtBackgroundColor)
+textRect = text.get_rect() 
+textRect.center = (width // 2, height // 2) 
 
 #moves the prey
 def move_prey():
@@ -76,7 +90,7 @@ def main():
         sys.exit()
       if event.type == MOUSEBUTTONDOWN:
         # adds prey when and where you click
-        preys.append(Prey(event.pos))
+        preys.add(Prey(event.pos))
       if event.type == KEYUP:
         if event.key == K_UP:
           player.speed[1]=0 
@@ -122,6 +136,11 @@ def main():
 
     screen.blit(player.image,player.rect)
     player.update()
+
+    get_hit=pygame.sprite.spritecollide(player,preys,False)
+    screen.blit(player.image,player.rect)
+    if get_hit:
+      screen.blit(text,textRect)
 
     #updates it
     pygame.display.flip()
