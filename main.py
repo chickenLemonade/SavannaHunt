@@ -3,9 +3,16 @@ import random
 from pygame.locals import *
 from prey import *
 from lion import *
+from hunter import *
 
 #reactions possible for catching prey
 eat = ['Delicious!', 'Mmmm', 'Tasty', 'I\'ve caught you!', 'You\'ll never escape!', 'You will make a fine dinner']
+
+#when hunter touches lion
+hurt = ['Ahh!', 'That hurt!', 'You are a BAD hunter!', 'Please don\'t hurt me!']
+
+#when hunter kills lion
+die = ['Nooooooo', 'Why?']
 
 # start score
 scorePoint = 0
@@ -42,7 +49,6 @@ scoreBackground = (7,84,152)
 winColor = (152,195,225)
 winBackgroundColor = (66,103,149)
 
-
 player = Lion((150,150))
 
 # loading the prey image
@@ -67,6 +73,9 @@ pygame.transform.rotate(prey_image, 180 - rotation)
 
 #prey created
 preys = pygame.sprite.Group() 
+
+#hunters created
+hunters = pygame.sprite.Group()
 
 #moves the prey
 def move_prey():
@@ -104,8 +113,14 @@ def main():
       if event.type == quit:
         sys.exit()
       if event.type == MOUSEBUTTONDOWN:
-        # adds prey when and where you click
-        preys.add(Prey(event.pos))
+        # determines if hunter spawns
+        num = random.randint(0, 1234)
+        if num % 2 == 0:
+          hunters.add(Hunter(event.pos))
+        else:
+          #adds prey
+          preys.add(Prey(event.pos))
+        
       if event.type == KEYUP:
         if event.key == K_UP:
           player.speed[1]=0 
@@ -134,6 +149,11 @@ def main():
       prey.update()
     for prey in preys:
       prey.draw(screen)
+
+    for hunter in hunters:
+      hunter.update()
+    for hunter in hunters:
+      hunter.draw(screen)
 
     screen.blit(player.image,player.rect)
     player.update()

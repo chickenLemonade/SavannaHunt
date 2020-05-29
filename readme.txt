@@ -43,3 +43,29 @@ to add some competition to the game, this is what I have to do next:
   - if hunter touches lion, -3 hp
   - if lion eats prey, +1 hp
   - if hp <= 0, game over screen
+
+
+
+to decide whether a hunter spawns, pick a random number. if that random number is even, spawn a hunter.
+
+code for that
+
+num = random.randint(0, 3)
+if num % 2 == 0:
+  hunters.add(Hunter(event.pos))
+
+
+
+hunters die after a certain amount of time
+
+TO DO THAT:
+
+when hunter is created, store that time
+in loop for hunter, check if current time is still in that 'window'
+
+METHOD FOR THAT
+
+get tics gives current time:
+pygame.time.get_ticks()
+
+can use stack overflow
