@@ -131,7 +131,7 @@ def main():
     screen.blit(player.image,player.rect)
     player.update()
 
-    get_hit=pygame.sprite.spritecollide(player,preys,False)
+    get_hit=pygame.sprite.spritecollide(player,preys,True)
     screen.blit(player.image,player.rect)
     if get_hit:
       # picks a reaction
@@ -145,11 +145,9 @@ def main():
       textRect.center = (width // 2, 550)
       screen.blit(text,textRect)
 
-      #MORE STUFF FOR THE SCORE
-
-      #adds a point every time
+      #adds a to the score point every time
       scorePoint += 1
-
+      
     #same as text
     scoreFont = pygame.font.Font('freesansbold.ttf', 32) 
     score = scoreFont.render(scoreAPoint, True, scoreColor, scoreBackground)
