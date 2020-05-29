@@ -18,17 +18,7 @@ _6 make collision code
 
 __________OPTIONAL:____________
 
-7 in collision code, take away prey when collision is detected
+_7 in collision code, take away prey when _collision is detected
 
 _8 make text in the top left of screen with score
 _9 when collision is detected add 1 to score
-
-10 when collision is detected, make lion pic one of an eating lion and time.sleep(2)
-
-
-__________THE CODE FOR 7 PARTIALLY MADE IS...__________
-
-
-if event.key == K_d:
-  for i in range(len(fishes) // 2):
-  fishes.pop(0)

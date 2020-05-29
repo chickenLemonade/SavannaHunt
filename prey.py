@@ -31,10 +31,10 @@ class Prey(pygame.sprite.Sprite):
       self.rect.move_ip(self.speed[0], 0)  
       
       #if prey hits top or bottom      
-      if self.rect.top < 0 or self.rect.bottom > screen_info.current_h:            
-        self.speed[1] *= -1            
-        self.image = pygame.transform.flip(self.image, False, True)
-        self.rect.move_ip(0, self.speed[1])
-        
+    if self.rect.top < 0 or self.rect.bottom > screen_info.current_h:            
+      self.speed[1] *= -1            
+      self.image = pygame.transform.flip(self.image, False, True)
+      self.rect.move_ip(0, self.speed[1])
+      
   def draw(self, screen):
         screen.blit(self.image, self.rect)
