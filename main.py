@@ -7,8 +7,8 @@ from lion import *
 #reactions possible for catching prey
 eat = ['Delicious!', 'Mmmm', 'Tasty', 'I\'ve caught you!', 'You\'ll never escape!', 'You will make a fine dinner']
 
+# start score
 scorePoint = 0
-scoreAPoint = "Score is: " + str(scorePoint + 1)
 
 pygame.init()
 
@@ -115,20 +115,6 @@ def main():
         if event.key==K_RIGHT:
           player.speed[0]=15
 
-
-
-        if event.key == K_g:
-          speed[0] = 0
-          speed[1] = 0
-        if event.key == K_f:
-          speed[0] = 40
-          speed[1] = 40
-        if event.key == K_s:
-          speed[0] = 10
-          speed[1] = 10
-
-
-
     move_prey()
     #makes background color
     screen.fill(color)
@@ -148,17 +134,17 @@ def main():
       # picks a reaction
       num = random.randint(0, len(eat) - 1)
       devour = eat[num]
+
+      # remove(preys)
+
       #stuff for font
       font=pygame.font.Font('freesansbold.ttf', 32) 
       text = font.render(devour, True, textColor, txtBackgroundColor)
       textRect = text.get_rect() 
-      textRect.center = (width // 2, height // 2)
+      textRect.center = (width // 2, 360)
       screen.blit(text,textRect)
 
       #MORE STUFF FOR THE SCORE
-
-      #start score
-      scorePoint = 0
 
       #adds a point every time
       scoreAPoint = "Score is: " + str(scorePoint + 1)
@@ -167,12 +153,11 @@ def main():
       scoreFont = pygame.font.Font('freesansbold.ttf', 32) 
       score = scoreFont.render(scoreAPoint, True, scoreColor, scoreBackground)
       scoreRect = score.get_rect() 
-      scoreRect.topleft = (width // 2, height // 2)
+      scoreRect.topleft = (70, 70)
       screen.blit(score,scoreRect)
 
     #updates it 
     pygame.display.flip()
-
 
 
 #game loop
