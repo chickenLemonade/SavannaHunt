@@ -69,3 +69,16 @@ get tics gives current time:
 pygame.time.get_ticks()
 
 can use stack overflow
+
+
+
+
+
+
+
+learned in class:
+
+moving with keys
+making text
+making image
+importing fonts

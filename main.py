@@ -9,13 +9,19 @@ from hunter import *
 eat = ['Delicious!', 'Mmmm', 'Tasty', 'I\'ve caught you!', 'You\'ll never escape!', 'You will make a fine dinner']
 
 #when hunter touches lion
-hurt = ['Ahh!', 'That hurt!', 'You are a BAD hunter!', 'Please don\'t hurt me!']
+hurt = ['Ahh!', 'That hurt!', 'You are a BAD hunter!', 'Please don\'t hurt me!', 'Ouch!']
+
+# react = random.randint(0, len(die) - 1)
+# dieReaction = die[react]
 
 #when hunter kills lion
-die = ['Nooooooo', 'Why?']
+die = ['Nooooooo', 'Why?', 'I have a family!']
 
 # start score
 scorePoint = 0
+
+# start health
+hp = 20
 
 pygame.init()
 
@@ -37,6 +43,9 @@ color = (235, 204, 52)
 #color of background when you win
 newColor = (66,103,149)
 
+#color of background when you die
+dieColor = (228,89,69)
+
 #tect color and background color
 textColor=(50,254,30)
 txtBackgroundColor=(94,0,4)
@@ -49,7 +58,19 @@ scoreBackground = (7,84,152)
 winColor = (152,195,225)
 winBackgroundColor = (66,103,149)
 
-player = Lion((150,150))
+#color of die text
+deathColor = (223,245,128)
+deathBackgroundColor = (228,89,69)
+
+#color of hurt text
+ouchColor = (244,201,12)
+ouchBack = (140,219,246)
+
+#stuff for hp
+hpColor = (184,240,161)
+hpBackgroundColor = (7,84,152)
+
+player = Lion((150,180))
 
 # loading the prey image
 prey_image = pygame.image.load("prey.jpg")
@@ -99,6 +120,7 @@ def move_prey():
     #updates it
     prey_image = pygame.transform.flip(prey_image, False, True)
 
+
 # game code
 def main():
   #while true == will always run
@@ -107,6 +129,9 @@ def main():
     clock.tick(60)
     global scorePoint
     global scoreAPoint
+    global hp
+    global myHp
+    myHp = ("Health is: " + str(hp))
     scoreAPoint = ("Score is: " + str(scorePoint))
 
     for event in pygame.event.get():
@@ -158,6 +183,21 @@ def main():
     screen.blit(player.image,player.rect)
     player.update()
 
+    hit_hunter = pygame.sprite.spritecollide(player,hunters,True)
+    screen.blit(player.image,player.rect)
+    if hit_hunter:
+      #picks a reaction
+      getHurt = random.randint(0, len(hurt) -1)
+      hurtReaction = hurt[getHurt]
+
+      font = pygame.font.Font('freesansbold.ttf', 32) 
+      ouch = font.render(hurtReaction, True, ouchColor, ouchBack)
+      ouchRect = ouch.get_rect() 
+      ouchRect.center = (width // 2, 550)
+      screen.blit(ouch,ouchRect)
+
+      hp = hp -1
+
     get_hit=pygame.sprite.spritecollide(player,preys,True)
     screen.blit(player.image,player.rect)
     if get_hit:
@@ -179,8 +219,14 @@ def main():
     scoreFont = pygame.font.Font('freesansbold.ttf', 32) 
     score = scoreFont.render(scoreAPoint, True, scoreColor, scoreBackground)
     scoreRect = score.get_rect() 
-    scoreRect.topleft = (50, 50)
+    scoreRect.topleft = (50, 90)
     screen.blit(score,scoreRect)
+
+    hpFont = pygame.font.Font('freesansbold.ttf', 32) 
+    theHp = hpFont.render(myHp, True, hpColor, hpBackgroundColor)
+    hpRect = theHp.get_rect() 
+    hpRect.topleft = (50, 50)
+    screen.blit(theHp,hpRect)
 
     if scorePoint >= 30:
       screen.fill(newColor)
@@ -190,6 +236,15 @@ def main():
       winRect = win.get_rect() 
       winRect.center = (width // 2, height //2)
       screen.blit(win,winRect)
+    
+    if hp <= 0:
+      screen.fill(dieColor)
+
+      dieFont = pygame.font.Font('Modak-Devanagari.ttf', 100) 
+      death = dieFont.render("nooooo", True, deathColor, deathBackgroundColor)
+      dieRect = death.get_rect() 
+      dieRect.center = (width // 2, height //2)
+      screen.blit(death,dieRect)
       
 
     #updates it
