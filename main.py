@@ -79,22 +79,22 @@ def main():
         preys.append(Prey(event.pos))
       if event.type == KEYUP:
         if event.key == K_UP:
-          Player.speed[1]=0 
+          player.speed[1]=0 
         if event.key == K_DOWN:
-          Player.speed[1]=0  
+          player.speed[1]=0  
         if event.key==K_LEFT:
-          Player.speed[0]=0
+          player.speed[0]=0
         if event.key==K_RIGHT:
-          Player.speed[0]=0
+          player.speed[0]=0
     if event.type == KEYDOWN:
         if event.key == K_UP:
-          Player.speed[1]=-10 
+          player.speed[1]=-15
         if event.key == K_DOWN:
-          Player.speed[1]=10  
+          player.speed[1]=15  
         if event.key==K_LEFT:
-          Player.speed[0]=-10
+          player.speed[0]=-15
         if event.key==K_RIGHT:
-          Player.speed[0]=10
+          player.speed[0]=15
 
 
 
@@ -120,6 +120,7 @@ def main():
     for prey in preys:
       prey.draw(screen)
 
+    screen.blit(player.image,player.rect)
     player.update()
 
     #updates it

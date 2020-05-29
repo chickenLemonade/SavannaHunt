@@ -7,7 +7,7 @@ class Lion(pygame.sprite.Sprite):
         super().__init__()
         #loads image
         self.image = pygame.image.load('lion.jpg')
-        self.image = pygame.transform.smoothscale(self.image, (100, 100))
+        self.image = pygame.transform.smoothscale(self.image, (150, 150))
         
         self.rect = self.image.get_rect()
         self.rect.center = pos
