@@ -142,7 +142,7 @@ def main():
       font=pygame.font.Font('freesansbold.ttf', 32) 
       text = font.render(devour, True, textColor, txtBackgroundColor)
       textRect = text.get_rect() 
-      textRect.center = (width // 2, 360)
+      textRect.center = (width // 2, 550)
       screen.blit(text,textRect)
 
       #MORE STUFF FOR THE SCORE
